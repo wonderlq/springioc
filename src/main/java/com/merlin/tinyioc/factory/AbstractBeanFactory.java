@@ -16,6 +16,9 @@ public abstract class AbstractBeanFactory implements BeanFactory{
 
     @Override
     public void registerBean(String name, BeanDefinition beanDefinition) {
+        if (map.containsKey(name)){
+            return;
+        }
         Object bean = createBean(beanDefinition);
         beanDefinition.setObject(bean);
         map.put(name,beanDefinition);

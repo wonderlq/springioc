@@ -12,11 +12,7 @@ public class AutowireBeanFactory extends AbstractBeanFactory {
     @Override
     protected Object createBean(BeanDefinition beanDefinition) {
         try {
-            if (beanDefinition.getBean() == null) {
-                return beanDefinition.getClazz().newInstance();
-            } else {
-                return beanDefinition.getBean();
-            }
+            return beanDefinition.getClazz().newInstance();
         } catch (Exception e) {
             System.out.println("create new instance error" + e.getMessage());
         }
