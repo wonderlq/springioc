@@ -8,6 +8,8 @@ package com.merlin.tinyioc;
 public class BeanDefinition {
 
     private Object object;
+    private Class clazz;
+    private String className;
 
     public BeanDefinition(Object object) {
         this.object = object;
@@ -15,5 +17,22 @@ public class BeanDefinition {
 
     public Object getBean() {
         return object;
+    }
+
+    public BeanDefinition(String className) {
+        this.className = className;
+        try {
+            this.clazz = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Class getClazz() {
+        return clazz;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
     }
 }

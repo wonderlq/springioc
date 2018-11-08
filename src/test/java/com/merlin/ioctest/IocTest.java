@@ -1,7 +1,8 @@
 package com.merlin.ioctest;
 
 import com.merlin.tinyioc.BeanDefinition;
-import com.merlin.tinyioc.BeanFactory;
+import com.merlin.tinyioc.factory.AutowireBeanFactory;
+import com.merlin.tinyioc.factory.BeanFactory;
 
 /**
  * @author lq
@@ -12,14 +13,13 @@ public class IocTest {
 
     public static void main(String[] args) {
 
-        HelloServer helloServer = new HelloServer();
-        BeanDefinition beanDefinition = new BeanDefinition(helloServer);
 
-        BeanFactory beanFactory = new BeanFactory();
+        BeanDefinition beanDefinition = new BeanDefinition("com.merlin.ioctest.HelloServer");
+
+        BeanFactory beanFactory = new AutowireBeanFactory();
         beanFactory.registerBean("helloServer", beanDefinition);
 
         HelloServer helloServer1 = (HelloServer) beanFactory.getBean("helloServer");
-        System.out.println(helloServer);
         System.out.println(helloServer1);
     }
 }
