@@ -10,6 +10,7 @@ public class BeanDefinition {
     private Object object;
     private Class clazz;
     private String className;
+    private Properties properties;
 
     public BeanDefinition(Object object) {
         this.object = object;
@@ -34,5 +35,13 @@ public class BeanDefinition {
 
     public void setObject(Object object) {
         this.object = object;
+    }
+
+    public Properties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Properties properties) {
+        this.properties = properties;
     }
 }
