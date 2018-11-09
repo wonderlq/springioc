@@ -44,4 +44,15 @@ public class BeanDefinition {
     public void setProperties(Properties properties) {
         this.properties = properties;
     }
+
+    public BeanDefinition() {
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
 }

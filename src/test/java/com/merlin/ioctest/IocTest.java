@@ -5,6 +5,10 @@ import com.merlin.tinyioc.Properties;
 import com.merlin.tinyioc.Property;
 import com.merlin.tinyioc.factory.AutowireBeanFactory;
 import com.merlin.tinyioc.factory.BeanFactory;
+import com.merlin.tinyioc.io.ResourceLoader;
+import com.merlin.tinyioc.xml.XmlBeanDefinitionReader;
+
+import java.util.Map;
 
 /**
  * @author lq
@@ -15,15 +19,13 @@ public class IocTest {
 
     public static void main(String[] args) {
 
-
-        BeanDefinition beanDefinition = new BeanDefinition("com.merlin.ioctest.HelloServer");
-        Property property = new Property("name","merlin");
-        Properties properties = new Properties();
-        properties.addProperty(property);
-        beanDefinition.setProperties(properties);
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new ResourceLoader());
+        reader.loadBeanDefinition("application.xml");
 
         BeanFactory beanFactory = new AutowireBeanFactory();
-        beanFactory.registerBean("helloServer", beanDefinition);
+        for (Map.Entry<String, BeanDefinition> entry : reader.getBeanMap().entrySet()) {
+            beanFactory.registerBean(entry.getKey(), entry.getValue());
+        }
 
         HelloServer helloServer1 = (HelloServer) beanFactory.getBean("helloServer");
         System.out.println(helloServer1.getName());
