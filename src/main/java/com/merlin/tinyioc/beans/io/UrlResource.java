@@ -1,4 +1,4 @@
-package com.merlin.tinyioc.io;
+package com.merlin.tinyioc.beans.io;
 
 import java.io.InputStream;
 import java.net.URL;

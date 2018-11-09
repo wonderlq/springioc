@@ -1,8 +1,8 @@
-package com.merlin.tinyioc.factory;
+package com.merlin.tinyioc.beans.factory;
 
-import com.merlin.tinyioc.BeanDefinition;
-import com.merlin.tinyioc.BeanReference;
-import com.merlin.tinyioc.Property;
+import com.merlin.tinyioc.beans.BeanDefinition;
+import com.merlin.tinyioc.beans.BeanReference;
+import com.merlin.tinyioc.beans.Property;
 
 import java.lang.reflect.Field;
 

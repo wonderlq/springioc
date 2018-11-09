@@ -1,12 +1,12 @@
 package com.merlin.ioctest;
 
-import com.merlin.tinyioc.BeanDefinition;
-import com.merlin.tinyioc.Properties;
-import com.merlin.tinyioc.Property;
-import com.merlin.tinyioc.factory.AutowireBeanFactory;
-import com.merlin.tinyioc.factory.BeanFactory;
-import com.merlin.tinyioc.io.ResourceLoader;
-import com.merlin.tinyioc.xml.XmlBeanDefinitionReader;
+import com.merlin.tinyioc.beans.BeanDefinition;
+import com.merlin.tinyioc.beans.factory.AutowireBeanFactory;
+import com.merlin.tinyioc.beans.factory.BeanFactory;
+import com.merlin.tinyioc.beans.io.ResourceLoader;
+import com.merlin.tinyioc.beans.xml.XmlBeanDefinitionReader;
+import com.merlin.tinyioc.context.ApplicationContext;
+import com.merlin.tinyioc.context.ClassPathXmlApplicationContext;
 
 import java.util.Map;
 
@@ -19,15 +19,10 @@ public class IocTest {
 
     public static void main(String[] args) throws Exception {
 
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new ResourceLoader());
-        reader.loadBeanDefinition("application.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
 
-        BeanFactory beanFactory = new AutowireBeanFactory();
-        for (Map.Entry<String, BeanDefinition> entry : reader.getBeanMap().entrySet()) {
-            beanFactory.registerBean(entry.getKey(), entry.getValue());
-        }
-
-        HelloServer helloServer1 = (HelloServer) beanFactory.getBean("helloServer");
+        ((ClassPathXmlApplicationContext) applicationContext).refresh();
+        HelloServer helloServer1 = (HelloServer) applicationContext.getBean("helloServer");
         System.out.println(helloServer1.getName());
         System.out.println(helloServer1.getSayWord().getWord());
     }

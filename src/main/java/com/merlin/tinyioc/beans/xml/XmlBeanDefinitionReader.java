@@ -1,11 +1,11 @@
-package com.merlin.tinyioc.xml;
+package com.merlin.tinyioc.beans.xml;
 
-import com.merlin.tinyioc.AbstractBeanDefinitionReader;
-import com.merlin.tinyioc.BeanDefinition;
-import com.merlin.tinyioc.BeanReference;
-import com.merlin.tinyioc.Properties;
-import com.merlin.tinyioc.Property;
-import com.merlin.tinyioc.io.ResourceLoader;
+import com.merlin.tinyioc.beans.AbstractBeanDefinitionReader;
+import com.merlin.tinyioc.beans.BeanDefinition;
+import com.merlin.tinyioc.beans.BeanReference;
+import com.merlin.tinyioc.beans.Properties;
+import com.merlin.tinyioc.beans.Property;
+import com.merlin.tinyioc.beans.io.ResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

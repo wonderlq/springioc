@@ -1,4 +1,4 @@
-package com.merlin.tinyioc;
+package com.merlin.tinyioc.beans;
 
 import java.util.ArrayList;
 import java.util.List;

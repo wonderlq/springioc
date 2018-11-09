@@ -1,6 +1,6 @@
-package com.merlin.tinyioc;
+package com.merlin.tinyioc.beans;
 
-import com.merlin.tinyioc.io.ResourceLoader;
+import com.merlin.tinyioc.beans.io.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,13 +11,8 @@ import java.util.Map;
  * Created On 2018-11-09 10:32
  */
 public abstract class AbstractBeanDefinitionReader implements BeanDefinitionReader {
-
-
     private Map<String, BeanDefinition> beanMap;
-
-
     private ResourceLoader resourceLoader;
-
 
     public AbstractBeanDefinitionReader(ResourceLoader resourceLoader) {
         this.beanMap = new HashMap<>();

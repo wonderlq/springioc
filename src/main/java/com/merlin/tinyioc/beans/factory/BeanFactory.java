@@ -1,7 +1,4 @@
-package com.merlin.tinyioc.factory;
-
-import com.merlin.tinyioc.BeanDefinition;
-
+package com.merlin.tinyioc.beans.factory;
 
 /**
  * @author lq
@@ -11,6 +8,4 @@ import com.merlin.tinyioc.BeanDefinition;
 public interface BeanFactory {
 
     Object getBean(String name) throws Exception;
-
-    void registerBean(String name, BeanDefinition beanDefinition);
 }

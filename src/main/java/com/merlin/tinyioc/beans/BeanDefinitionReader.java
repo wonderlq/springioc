@@ -1,4 +1,4 @@
-package com.merlin.tinyioc;
+package com.merlin.tinyioc.beans;
 
 /**
  * @author lq

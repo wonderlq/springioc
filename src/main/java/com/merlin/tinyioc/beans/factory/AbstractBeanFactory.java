@@ -1,6 +1,6 @@
-package com.merlin.tinyioc.factory;
+package com.merlin.tinyioc.beans.factory;
 
-import com.merlin.tinyioc.BeanDefinition;
+import com.merlin.tinyioc.beans.BeanDefinition;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +13,6 @@ import java.util.Map;
 public abstract class AbstractBeanFactory implements BeanFactory {
 
     private Map<String, BeanDefinition> map = new HashMap<>();
-
-    @Override
-    public void registerBean(String name, BeanDefinition beanDefinition) {
-        map.put(name, beanDefinition);
-    }
 
     @Override
     public Object getBean(String name) throws Exception {
@@ -35,4 +30,8 @@ public abstract class AbstractBeanFactory implements BeanFactory {
     }
 
     protected abstract Object createBean(BeanDefinition beanDefinition);
+
+    public void registryBean(String name, BeanDefinition beanDefinition){
+        map.put(name,beanDefinition);
+    }
 }
