@@ -24,7 +24,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
             throw new Exception("not find beanDefinition {" + name + "}");
         }
 
-        Object object = beanDefinition.getBean();
+        Object object = beanDefinition.getBean(); //尝试获取对象，拿不到创建
         if (object == null) {
             return createBean(beanDefinition);
         }

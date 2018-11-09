@@ -17,7 +17,7 @@ public class AutowireBeanFactory extends AbstractBeanFactory {
     protected Object createBean(BeanDefinition beanDefinition) {
         try {
             Object bean = beanDefinition.getClazz().newInstance();
-            beanDefinition.setObject(bean);
+            beanDefinition.setObject(bean); //先设置对象，防止循环引用拿不到对象
             applyProperty(bean, beanDefinition);
             return bean;
         } catch (Exception e) {
