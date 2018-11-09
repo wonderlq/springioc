@@ -17,6 +17,7 @@ public class AutowireBeanFactory extends AbstractBeanFactory {
     protected Object createBean(BeanDefinition beanDefinition) {
         try {
             Object bean = beanDefinition.getClazz().newInstance();
+            beanDefinition.setObject(bean);
             applyProperty(bean, beanDefinition);
             return bean;
         } catch (Exception e) {
