@@ -2,7 +2,9 @@ package com.merlin.tinyioc.beans.factory;
 
 import com.merlin.tinyioc.beans.BeanDefinition;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,6 +15,7 @@ import java.util.Map;
 public abstract class AbstractBeanFactory implements BeanFactory {
 
     private Map<String, BeanDefinition> map = new HashMap<>();
+    private List<String> beanList = new ArrayList<>();
 
     @Override
     public Object getBean(String name) throws Exception {
@@ -31,7 +34,16 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 
     protected abstract Object createBean(BeanDefinition beanDefinition);
 
-    public void registryBean(String name, BeanDefinition beanDefinition){
-        map.put(name,beanDefinition);
+    public void registryBean(String name, BeanDefinition beanDefinition) {
+        map.put(name, beanDefinition);
+        beanList.add(name);
+    }
+
+    public void initBean() throws Exception {
+        for (String beanName : beanList) {
+            getBean(beanName);
+        }
+
     }
 }
+

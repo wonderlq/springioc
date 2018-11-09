@@ -25,6 +25,7 @@ public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
     public ClassPathXmlApplicationContext(String location, AutowireBeanFactory autowireBeanFactory) {
         super(autowireBeanFactory);
         this.location = location;
+        refresh();
     }
 
     @Override

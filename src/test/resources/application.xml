@@ -11,11 +11,12 @@
 
     <bean name="helloServer" class="com.merlin.ioctest.HelloServer">
         <proty name="name" value="Hello World!"></proty>
-        <proty name="sayWord" ref="hi"></proty>
+        <proty name="sayWord" ref="sayWord"></proty>
     </bean>
 
-    <bean name="hi" class="com.merlin.ioctest.SayWord">
+    <bean name="sayWord" class="com.merlin.ioctest.SayWord">
         <proty name="word" value="ni hao"></proty>
+        <proty name="helloServer" ref="helloServer"></proty>
     </bean>
 
 </beans>

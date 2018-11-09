@@ -9,11 +9,21 @@ public class SayWord {
 
     private String word;
 
+    private HelloServer helloServer;
+
     public String getWord() {
         return word;
     }
 
     public void setWord(String word) {
         this.word = word;
+    }
+
+    public HelloServer getHelloServer() {
+        return helloServer;
+    }
+
+    public void setHelloServer(HelloServer helloServer) {
+        this.helloServer = helloServer;
     }
 }
