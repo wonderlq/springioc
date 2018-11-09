@@ -8,6 +8,7 @@ package com.merlin.ioctest;
 public class HelloServer {
 
     private String name;
+    private SayWord sayWord;
 
     public String getName() {
         return name;
@@ -15,5 +16,13 @@ public class HelloServer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public SayWord getSayWord() {
+        return sayWord;
+    }
+
+    public void setSayWord(SayWord sayWord) {
+        this.sayWord = sayWord;
     }
 }

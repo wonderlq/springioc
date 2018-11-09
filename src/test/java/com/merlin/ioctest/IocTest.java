@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class IocTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new ResourceLoader());
         reader.loadBeanDefinition("application.xml");
@@ -29,5 +29,6 @@ public class IocTest {
 
         HelloServer helloServer1 = (HelloServer) beanFactory.getBean("helloServer");
         System.out.println(helloServer1.getName());
+        System.out.println(helloServer1.getSayWord().getWord());
     }
 }

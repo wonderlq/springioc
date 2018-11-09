@@ -1,6 +1,7 @@
 package com.merlin.tinyioc.factory;
 
 import com.merlin.tinyioc.BeanDefinition;
+import com.merlin.tinyioc.BeanReference;
 import com.merlin.tinyioc.Property;
 
 import java.lang.reflect.Field;
@@ -29,7 +30,14 @@ public class AutowireBeanFactory extends AbstractBeanFactory {
             for (Property property : bd.getProperties().getPropertyValues()) {
                 Field field = bean.getClass().getDeclaredField(property.getName());
                 field.setAccessible(true);
-                field.set(bean, property.getValue());
+
+                if (property.getValue() instanceof BeanReference) {
+                    Object ob = getBean(((BeanReference) property.getValue()).getName());
+                    field.set(bean, ob);
+                } else {
+                    field.set(bean, property.getValue());
+
+                }
             }
         } catch (Exception e) {
             System.out.println("apply properties exception " + e.getMessage());

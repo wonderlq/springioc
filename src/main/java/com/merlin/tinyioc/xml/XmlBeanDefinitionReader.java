@@ -2,6 +2,7 @@ package com.merlin.tinyioc.xml;
 
 import com.merlin.tinyioc.AbstractBeanDefinitionReader;
 import com.merlin.tinyioc.BeanDefinition;
+import com.merlin.tinyioc.BeanReference;
 import com.merlin.tinyioc.Properties;
 import com.merlin.tinyioc.Property;
 import com.merlin.tinyioc.io.ResourceLoader;
@@ -51,7 +52,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
     }
 
-    private void parseBeanDefinition(Element node) {
+    private void parseBeanDefinition(Element node) throws Exception {
         String name = node.getAttribute("name");
         String className = node.getAttribute("class");
         BeanDefinition beanDefinition = new BeanDefinition(className);
@@ -62,11 +63,19 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             Node propertyNode = property.item(i);
             if (propertyNode instanceof Element) {
                 String proName = ((Element) propertyNode).getAttribute("name");
-                Object value = ((Element) propertyNode).getAttribute("value");
-                properties.addProperty(new Property(proName, value));
+                String value = ((Element) propertyNode).getAttribute("value");
+                if (value != null && value.length() > 0) {
+                    properties.addProperty(new Property(proName, value));
+                } else {
+                    value = ((Element) propertyNode).getAttribute("ref");
+                    if (value == null || value.length() == 0) {
+                        throw new Exception("bean definition error,need a value");
+                    }
+                    properties.addProperty(new Property(proName, new BeanReference(value)));
+                }
             }
         }
         beanDefinition.setProperties(properties);
-        getBeanMap().put(name,beanDefinition);
+        getBeanMap().put(name, beanDefinition);
     }
 }
