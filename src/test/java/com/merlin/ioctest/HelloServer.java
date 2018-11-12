@@ -5,7 +5,7 @@ package com.merlin.ioctest;
  * @since 1.0.0
  * Created On 2018-11-08 17:15
  */
-public class HelloServer {
+public class HelloServer implements  HelloServerInterface{
 
     private String name;
     private SayWord sayWord;
@@ -24,5 +24,10 @@ public class HelloServer {
 
     public void setSayWord(SayWord sayWord) {
         this.sayWord = sayWord;
+    }
+
+    @Override
+    public void say() {
+        System.out.println("i'm say hello");
     }
 }
